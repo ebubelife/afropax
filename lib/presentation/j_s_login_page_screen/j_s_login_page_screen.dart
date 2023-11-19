@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;import 'package:oga_artisan/core/app_export.dart';import 'package:oga_artisan/widgets/app_bar/appbar_leading_iconbutton.dart';import 'package:oga_artisan/widgets/app_bar/appbar_title.dart';import 'package:oga_artisan/widgets/app_bar/custom_app_bar.dart';import 'package:oga_artisan/widgets/custom_elevated_button.dart';import 'package:oga_artisan/widgets/custom_text_form_field.dart';
+// ignore_for_file: must_be_immutable
+class JSLoginPageScreen extends StatelessWidget {JSLoginPageScreen({Key? key}) : super(key: key);
+
+TextEditingController emailController = TextEditingController();
+
+TextEditingController passwordController = TextEditingController();
+
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+@override Widget build(BuildContext context) { mediaQueryData = MediaQuery.of(context); return SafeArea(child: Scaffold(backgroundColor: theme.colorScheme.primary, resizeToAvoidBottomInset: false, appBar: _buildAppBar(context), body: Form(key: _formKey, child: SingleChildScrollView(padding: EdgeInsets.only(top: 33.v), child: Container(padding: EdgeInsets.symmetric(horizontal: 41.h, vertical: 34.v), decoration: BoxDecoration(image: DecorationImage(image: fs.Svg(ImageConstant.imgGroup6), fit: BoxFit.cover)), child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [SizedBox(height: 55.v), CustomTextFormField(controller: emailController, hintText: "Email", textInputType: TextInputType.emailAddress, prefix: Container(margin: EdgeInsets.fromLTRB(16.h, 16.v, 9.h, 16.v), child: CustomImageView(imagePath: ImageConstant.imgMaterialsymbolsphoneenabled, height: 17.adaptSize, width: 17.adaptSize)), prefixConstraints: BoxConstraints(maxHeight: 49.v), contentPadding: EdgeInsets.only(top: 12.v, right: 30.h, bottom: 12.v), borderDecoration: TextFormFieldStyleHelper.outlineBlackTL15, fillColor: appTheme.gray5001), SizedBox(height: 39.v), CustomTextFormField(controller: passwordController, hintText: "Password", textInputAction: TextInputAction.done, textInputType: TextInputType.visiblePassword, prefix: Container(margin: EdgeInsets.fromLTRB(16.h, 16.v, 8.h, 16.v), child: CustomImageView(imagePath: ImageConstant.imgEleyeclose, height: 17.adaptSize, width: 17.adaptSize)), prefixConstraints: BoxConstraints(maxHeight: 49.v), obscureText: true, contentPadding: EdgeInsets.only(top: 12.v, right: 30.h, bottom: 12.v), borderDecoration: TextFormFieldStyleHelper.outlineBlackTL15, fillColor: appTheme.gray5001), SizedBox(height: 57.v), CustomElevatedButton(height: 49.v, text: "Sign In", buttonStyle: CustomButtonStyles.outlineBlack, buttonTextStyle: CustomTextStyles.titleLargeOpenSansOnPrimaryContainer), SizedBox(height: 16.v), Align(alignment: Alignment.centerRight, child: Text("Forget Password ?", style: CustomTextStyles.bodyMediumOpenSansPrimaryContainer)), SizedBox(height: 342.v), Text("Don’t have an account? Register Now", style: CustomTextStyles.bodySmallPrimary)])))))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(leadingWidth: 62.h, leading: AppbarLeadingIconbutton(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 8.h, top: 1.v, bottom: 1.v), onTap: () {onTapArrowLeft(context);}), centerTitle: true, title: AppbarTitle(text: "Login")); } 
+
+/// Navigates back to the previous screen.
+onTapArrowLeft(BuildContext context) { Navigator.pop(context); } 
+ }
